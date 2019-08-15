@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<input id = "thaydoi" value="">
+<button type="button" onclick="themSanpham()">ADD</button>
+<button type="button" onclick="xoaSanpham()">DELETE</button>
+<br/><p></p>
+<table border="1">
+    <tr>
+        <td>STT</td>
+        <td>Tên SP</td>
+    </tr>
+    <tbody id="content">
+
+    </tbody>
+</table>
+<script>
+    let arr = ["Thuốc lá", "Bánh mì", "Nước lọc", "C2", "O độ"];
+    hienThi(arr);
+
+    function hienThi(arrInput) {
+        let tabl = '';
+        for (let i = 0; i < arrInput.length; i++) {
+            tabl += '<tr>';
+            tabl += '<td>'+(i+1)+'</td>';
+            tabl += '<td>'+(arr[i])+'</td>';
+            //tabl += '<td><input type="button" value="Edit"></td>';
+            tabl += '</tr>';
+        }
+        document.getElementById("content").innerHTML = tabl;
+    }
+    function themSanpham() {
+        let b = document.getElementById("thaydoi").value;
+        arr.push(b);
+        hienThi(arr);
+    }
+    function xoaSanpham() {
+        console.log('l: '+ arr.length);
+        let v = document.getElementById("thaydoi").value;
+        for (let b = 0; b < arr.length; b++) {
+            if (arr[b] == v) {
+                console.log('ls:'+arr.length);
+                arr.splice(b,1);
+                b--;
+            }
+        }
+        console.log('l:'+arr.length);
+        hienThi(arr);
+    }
+</script>
+</body>
+</html>
